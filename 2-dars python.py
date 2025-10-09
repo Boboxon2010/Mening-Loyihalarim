@@ -16,3 +16,6 @@ print("10 / 3 =", 10 / 3)
 print("10 // 3 =", 10 // 3)
 print("10 % 3 =", 10 % 3)
 print("2 ** 3 =", 2 ** 3)
+# 100 gacha sanash
+for i in range(0,101):
+    print(i)
