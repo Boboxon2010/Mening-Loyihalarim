@@ -1,21 +1,9 @@
-# print funksiyasi consolega chiqarish uchun ishlatiladi
-print("Hello, World!")
-print("Salom, Dunyo!")
-print(5)
-print(10 + 3)
-print(7 * 3)
-print(10 / 2)
-print(10 // 3)  # Butun sonlarni bo‘lish
-print(10 % 3)   # Qoldiqni chiqarish
-print(2 ** 3)  # Darajaga ko‘tarish
-print(3 + 5 * 2)  # Amallar tartibi
-print((3 + 5) * 2)  # Qavs ichidagi amal birinchi bajariladi
-print("3 + 5 =", 3 + 5)  # Matn va natijani birga chiqarish
-print("3 * 5 =", 3 * 5)
-print("10 / 3 =", 10 / 3)
-print("10 // 3 =", 10 // 3)
-print("10 % 3 =", 10 % 3)
-print("2 ** 3 =", 2 ** 3)
-# 100 gacha sanash
-for i in range(0,101):
-    print(i)
+# input bu foydalanuvchi tomonidan kiritilgan ma'lumotni qabul qilish uchun ishlatiladi
+ism = input("Ismingiz nima? ")
+print("Salom, " + ism + "!")
+yosh = input("Yoshingiz nechida? ")
+print(ism + ", siz " + yosh + " yoshdasiz.")
+# Foydalanuvchidan son olib, uning 1 dan 10 gacha bo'lgan ko'paytma jadvalini chiqaruvchi dastur
+son = int(input("Jadvalini chiqarishni istagan soningizni kiriting: "))
+for i in range(1, 11):
+    print(f"{son} x {i} = {son * i}")
