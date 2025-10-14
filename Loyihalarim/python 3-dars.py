@@ -23,4 +23,12 @@ yigindi=AC+BC
 print("AC kesmasi uzunligi:",AC)
 print("BC kesmasi uzunligi:",BC)
 print("AC va BC kesmalari uzunliklarining yig'indisi:",yigindi)
+#X kg konfetning narxi A so'm. 1 kg konfetning narxi va Y kg konfetning narxi aniqlansin.
+X=float(input("Konfetning og'irligini kiriting (kg): "))
+A=float(input("Konfetning narxini kiriting (so'm): "))
+Y=float(input("Nechta kg konfet olmoqchisiz: "))
+narx1=A/X
+narx2=Y*narx1
+print("1 kg konfetning narxi:",narx1,"so'm")
+print(Y,"kg konfetning narxi:",narx2,"so'm")
 
