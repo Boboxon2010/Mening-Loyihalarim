@@ -7,7 +7,7 @@ s2=pi*r2
 s3=pi*(r1-r2)
 print("Birinchi aylananing yuzasi",s1)
 print("Ikkinchi aylananing yuzasi",s2)
-print("Aylanalarning ayirmasi",s3)
+print("Aylanalarning yuzalari ayirmasi",s3)
 #masala 16: sonlar o'qida ikkita nuqta oraliqidagi masofa aniqlansin: 
 x1=float(input("Birinchi nuqtaning koordinatasini kiriting: "))
 x2=float(input("Ikkinchi nuqtaning koordinatasini kiriting: "))
