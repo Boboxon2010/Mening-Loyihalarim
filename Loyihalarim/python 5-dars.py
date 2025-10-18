@@ -159,3 +159,5 @@ print("Qatorlarga bo'lingan matn:", lines2)
 # isprintable() - matndagi barcha belgilar chop etiladiganligini tekshiradi
 text28 = "Hello World!"
 print("Matndagi barcha belgilar chop etiladimi?", text28.isprintable())
+#bugun men x ta metod o'rgandim
+print("Bugun men 30 ta metod o'rgandim")
