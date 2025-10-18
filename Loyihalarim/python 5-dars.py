@@ -130,7 +130,7 @@ print("Qatorlarga bo'lingan matn:", lines)
 # isprintable() - matndagi barcha belgilar chop etiladiganligini tekshiradi
 text22 = "Hello World!"
 print("Matndagi barcha belgilar chop etiladimi?", text22.isprintable())
-# () - matnni baytlarga aylantiradi
+# bytes() - matnni baytlarga aylantiradi
 text23 = "Hello"
 byte_text = bytes(text23, 'utf-8')
 print("Baytlarga aylantirilgan matn:", byte_text)
@@ -147,10 +147,7 @@ print(formatted_text2)
 # isidentifier() - matnning yaroqli identifikator ekanligini tekshiradi
 text24 = "variable_name"
 print("Matn yaroqli identifikatormi?", text24.isidentifier())
-# partition() - matnni ma'lum bir so'z bo'yicha uch qismga bo'ladi
-text25 = "Python dasturlash tili"   
-parted_text2 = text25.partition("dasturlash")
-print("Bo'lingan matn:", parted_text2)
+# (Removed duplicate partition() demonstration)
 # rpartition() - matnni ma'lum bir so'z bo'yicha uch qismga bo'ladi (oxirgi uchrashuvdan)
 text26 = "Python dasturlash tili dasturlash"
 rparted_text2 = text26.rpartition("dasturlash")
