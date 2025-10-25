@@ -27,3 +27,5 @@ print("3- masala: aylananing diametri  D berilgan. Uning uzunligini hisoblovchi 
 D = float(input("Aylananing diametrini kiriting: "))
 L=pi*D
 print("Aylananing uzunligi:",L)
+input("Dastur tugadi, chiqish uchun ENTER ni bosing")
+input("Dastur tugadi, chiqish uchun ctrl+esc ni bosing")
