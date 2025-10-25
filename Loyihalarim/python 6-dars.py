@@ -19,3 +19,4 @@ ITechniklar.append("Boboxon Jumaboyev")
 ITechniklar.append("Ixtiyorbek Baxtiyorov")
 ITechniklar.append("Elbek bot")
 print(ITechniklar)
+ 
