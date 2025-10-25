@@ -19,11 +19,24 @@ Tuple() O'zgarmas ro'yhatlar
 
 
 
-sonlar=list((4,3,5,6,2,1,7,8,9,0))
-print(sonlar)
+# sonlar=list((4,3,5,6,2,1,7,8,9,0))
+# print(sonlar)
 
-sonlar.sort(reverse=True)
-print(sonlar)
-sonlar1=list(range(1,201,2))
-print(sonlar1)
+# sonlar.sort(reverse=True)
+# print(sonlar)
+# sonlar1=list(range(1,201,2))
+# print(sonlar1)
+# print(min(sonlar1))
+
+
+davlatlar=["Uzbekiston","AQSH","Rossiya","Xitoy","Koreya","Yaponiya","Germaniya","Italiya","Fransiya"]
+country=davlatlar.copy()
+print("country nomli ro'yhat:",country)
+print("davlatlar nomli ro'yhat:",davlatlar)
+
+country.insert(0,"Kanada")
+print("country nomli ro'yhat:",country)
+print("davlatlar nomli ro'yhat:",davlatlar)
+
+
 
