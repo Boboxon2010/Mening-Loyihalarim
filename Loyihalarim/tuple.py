@@ -29,12 +29,12 @@ print(davlatlar.sort())
 
 print(davlatlar.sort(reverse=True))
 
-juft_sonlar=list(range(120,1201))
+juft_sonlar=list(range(120,1201,2))
 
-print(range(120, 1201))
+print(sum(juft_sonlar))
 
 print(max(juft_sonlar)-min(juft_sonlar))
 
 print(len(juft_sonlar))
 
-print("Juft sonlar ro'yhatidagi oldingi 20 ta son:",juft_sonlar[range(20)],"Juft sonlar ro'yhatidagi oxirgi 20 ta qiymat:",juft_sonlar[range(-20)])
+print("Juft sonlar ro'yhatidagi oldingi 20 ta son:",juft_sonlar[:20],"Juft sonlar ro'yhatidagi oxirgi 20 ta qiymat:",juft_sonlar[20:])
