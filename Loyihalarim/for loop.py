@@ -10,9 +10,10 @@
 # for i in range(30,91):
 #     print(i/9)
 """"""
-daraja=[]
-for i in range(27,54,7):
-    a=i**4
-    daraja.append(a)
-print(daraja)
-    
+# daraja=[]
+# for i in range(27,54,7):
+#     a=i**4
+#     daraja.append(a)
+# print(daraja)
+""""""
+
