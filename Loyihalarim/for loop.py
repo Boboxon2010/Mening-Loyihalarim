@@ -16,4 +16,14 @@
 #     daraja.append(a)
 # print(daraja)
 """"""
+# k=input()
+# n=int(input())
+# print(k*n)
+""""""
+s=0
+a,b=map(int,input("a va b sonini kiriting a<b:").split())
+for i in range(a,b+1):
+    print(f"{i}-son",i)
+    s+=1
+print("Jami",s,"ta son chiqdi")
 
