@@ -215,7 +215,7 @@ export default function App() {
             style={getButtonStyle("", true)}
             onClick={() => handleClick("0")}
           >
-            0
+            
           </button>
           <button style={getButtonStyle()} onClick={() => handleClick(".")}>
             .
