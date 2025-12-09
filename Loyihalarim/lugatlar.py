@@ -4,7 +4,7 @@ car0={
     "probeg":"hali ihlab chiqarilmagan",
     "narxi":"1 000 000 $"
 }
-lugat={
+inglizcha_lugat={
     "apple":"olma",
     "another":"boshqa bir",
     "banana":"banan",
@@ -19,3 +19,4 @@ lugat={
     "easy":"oson",
     
 }
+print(inglizcha_lugat["apple"])
