@@ -1,0 +1,165 @@
+@import url(fonts/font.css);
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+li {
+    list-style: none;
+}
+a {
+    text-decoration: none;
+}
+.container {
+    max-width: 1300px;
+    margin: 0 auto;
+    width: 100%;
+}
+.nav {
+    display: flex;
+    
+    justify-content: center;
+    flex-direction: column;
+    padding-block: 20px;
+
+}
+.nav_content{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;   
+}
+.content_titile{
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    color: #1b1d21;
+}
+.content_inp_card{
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    position: relative;
+    background-color: #f1f1f1;
+    padding: 12px;
+    border-radius: 5px;
+    width: 520px;
+    height: 45px;
+}
+.inp_card input{
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: none;
+    font-size: 18px;
+    font-weight: 400;
+    color: #959ead;
+    outline: none;
+
+}
+.inp_card i{
+    position: absolute;
+    right: 15px;
+    font-size: 24px;
+    color: #385566
+
+
+}
+.inp_card input::placeholder{
+    color: #959ead;
+}
+.content_inp_card select{
+    background:transparent;
+    outline:none;
+    border:none;
+    text-transform:capitalize;
+    padding: 8px;
+    font-weight: 400;
+    color: #161d25;
+    font-size: 16px;    
+}
+.nav_support_title{
+    font-size: 14px;
+    font-weight: 400;
+    color: #385566;
+    line-height: 20px;
+}
+.nav_support_text{
+    font-size: 16px;
+    font-weight: 700;
+    color: #1b1d21;
+    line-height: 20px;
+}
+.nav_icons{
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    justify-content: center;
+}
+.nav_icons i{
+    font-size: 24px;
+    color: #1b1d21;
+    cursor: pointer;
+}
+.nav_backet{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: center;
+
+
+}
+.backet_tite{
+    font-size: 15px;
+    font-weight: 600;
+    color: #385566;
+    margin-bottom: 2px;
+}
+.backet_price{
+    font-size: 14px;
+    font-weight:600;
+    color: #1da599;
+    cursor: pointer;
+}
+.nav_list{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+.list_icons{
+    width: 30px;
+    height: 30px;
+    flex-wrap: wrap;
+    display: flex;
+    gap: 2px;
+}
+.list_icon {
+    background: transparent;
+    border: 2px solid black;
+    width: 10px;
+    height: 10px;
+    border-radius: 2px;
+}
+.list_select{
+    display: flex;
+    align-items: center;
+    padding: 8px 16px;
+    background: #e5ec05;
+    border-radius: 5px;
+}
+.list_select select{
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    font-weight: 400;
+    color: #1b1d21;
+    gap: 5px;
+    
+}
+.nav_link {
+    font-size: 17px;
+    font-weight: 400;
+    color: #1b1d21;
+    cursor: pointer;
+}
