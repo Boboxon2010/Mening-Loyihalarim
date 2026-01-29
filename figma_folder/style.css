@@ -163,3 +163,13 @@ a {
     color: #1b1d21;
     cursor: pointer;
 }
+.header_content{
+    widht: 100%;
+    background: #eaeef3;
+    padding-block: 40px;
+}
+.header_content .container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
