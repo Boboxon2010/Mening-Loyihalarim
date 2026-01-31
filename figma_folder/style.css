@@ -173,3 +173,53 @@ a {
     align-items: center;
     justify-content: space-between;
 }
+.header_card1{
+    background: #00325f;
+    color: white;
+    padding-left: 50px;
+    padding-block: 110px;
+    width: 652px;
+    height: 447px;
+    border-radius: 10px;
+}
+.header_title{
+    font-size: 28px;
+    width: 330px;
+    line-height: 38px;
+    font-weight: 600;
+    letter-spacing: 0.9px;
+    margin-bottom: 6px;
+}
+.header_text{
+    font-size: 18px;
+    line-height: 36px;
+    font-weight: 400;
+    margin-bottom: 24px;
+    width: 230px;
+}
+.header_btn{
+    width: 179px;
+    height: 48px;
+    font-weight: 600;
+    font-size: 16px;
+    background: #1bd27e;
+    border: 2px solid #1bd27e;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    transition: all 1s ease-in-out;
+}
+.header_card2{
+    width: 458px;
+    height: 447px;
+    background:radial-gradient(#ffd36c, #ffd36c);    
+    text-align: center;
+    border-radius: 10px;
+}
+.header_text2{
+    font-size: 28px;
+    font-weight: 400;
+    line-height: 36px;
+    letter-spacing: 0.9px;
+    margin-bottom: 8px;
+}
