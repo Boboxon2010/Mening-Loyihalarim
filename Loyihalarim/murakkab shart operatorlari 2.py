@@ -14,4 +14,5 @@ for i in talabalar:
     baholanganlar[i]=baho
     
 print(f"Baholangan talabalar:\n {baholanganlar}")
+print(len(baholanganlar))
 
