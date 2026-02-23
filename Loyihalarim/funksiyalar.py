@@ -27,4 +27,4 @@
 
 def yosh_hisobla(tugilgan_yil):
     print(2026-tugilgan_yil)
-yosh_hisobla(2010)
+yosh_hisobla(2010)  

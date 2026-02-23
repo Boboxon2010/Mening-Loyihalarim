@@ -1,0 +1,505 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Boboxon • Python Backend</title>
+  <meta name="description" content="Boboxon Jumaboyev — Python Backend Developer • API • Automation" />
+  <style>
+    :root{
+      --bg:#060913;
+      --card: rgba(255,255,255,.06);
+      --stroke: rgba(255,255,255,.12);
+      --text: rgba(255,255,255,.92);
+      --muted: rgba(255,255,255,.65);
+      --a:#00F260;
+      --b:#0575E6;
+      --shadow: 0 18px 60px rgba(0,0,0,.55);
+      --radius: 22px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Apple Color Emoji","Segoe UI Emoji";
+      color:var(--text);
+      background: radial-gradient(1200px 800px at 15% 10%, rgba(0,242,96,.18), transparent 60%),
+                  radial-gradient(900px 700px at 85% 20%, rgba(5,117,230,.20), transparent 55%),
+                  radial-gradient(800px 600px at 60% 90%, rgba(0,242,96,.10), transparent 55%),
+                  var(--bg);
+      overflow-x:hidden;
+    }
+
+    /* particle canvas */
+    #fx{
+      position:fixed; inset:0;
+      width:100%; height:100%;
+      z-index:-3;
+      opacity:.9;
+    }
+
+    /* aurora overlay */
+    .aurora{
+      position:fixed; inset:-20%;
+      background:
+        radial-gradient(600px 400px at 20% 20%, rgba(0,242,96,.22), transparent 60%),
+        radial-gradient(520px 420px at 85% 30%, rgba(5,117,230,.22), transparent 62%),
+        radial-gradient(480px 380px at 60% 85%, rgba(0,242,96,.14), transparent 62%);
+      filter: blur(26px);
+      z-index:-2;
+      animation: drift 14s ease-in-out infinite alternate;
+      pointer-events:none;
+    }
+    @keyframes drift{
+      0%{transform: translate3d(-2%, -1%, 0) scale(1.02)}
+      100%{transform: translate3d(2%, 1%, 0) scale(1.06)}
+    }
+
+    /* mouse glow */
+    .glow{
+      position:fixed;
+      width:520px; height:520px;
+      border-radius:50%;
+      background: radial-gradient(circle at 30% 30%, rgba(0,242,96,.22), transparent 55%),
+                  radial-gradient(circle at 70% 70%, rgba(5,117,230,.18), transparent 55%);
+      filter: blur(22px);
+      transform: translate(-50%,-50%);
+      z-index:-1;
+      pointer-events:none;
+      opacity:.9;
+      mix-blend-mode: screen;
+    }
+
+    .wrap{
+      width:min(1120px, 92vw);
+      margin:0 auto;
+      padding: 56px 0 70px;
+    }
+
+    header{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:18px;
+      padding:18px 18px;
+      border:1px solid var(--stroke);
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(14px);
+    }
+    .brand{
+      display:flex; align-items:center; gap:14px;
+      min-width:240px;
+    }
+    .logo{
+      width:44px; height:44px; border-radius:14px;
+      background: linear-gradient(135deg, var(--a), var(--b));
+      box-shadow: 0 10px 30px rgba(0,242,96,.12), 0 10px 30px rgba(5,117,230,.10);
+    }
+    .brand h1{
+      margin:0; font-size:16px; letter-spacing:.2px;
+    }
+    .brand p{
+      margin:2px 0 0; color:var(--muted); font-size:12px;
+    }
+    nav{
+      display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end;
+    }
+    .btn{
+      border:1px solid var(--stroke);
+      background: rgba(255,255,255,.04);
+      color:var(--text);
+      padding:10px 12px;
+      border-radius: 14px;
+      text-decoration:none;
+      font-size:13px;
+      display:inline-flex;
+      gap:8px;
+      align-items:center;
+      transition: transform .18s ease, background .18s ease, border-color .18s ease;
+      will-change: transform;
+    }
+    .btn:hover{
+      transform: translateY(-2px);
+      background: rgba(255,255,255,.07);
+      border-color: rgba(255,255,255,.22);
+    }
+    .btn.primary{
+      border: none;
+      background: linear-gradient(135deg, var(--a), var(--b));
+      box-shadow: 0 14px 40px rgba(0,242,96,.14), 0 16px 42px rgba(5,117,230,.12);
+    }
+
+    .hero{
+      margin-top:18px;
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap:18px;
+      align-items:stretch;
+    }
+    @media (max-width: 920px){
+      .hero{grid-template-columns:1fr}
+      header{flex-direction:column; align-items:stretch}
+      nav{justify-content:flex-start}
+    }
+
+    .card{
+      border:1px solid var(--stroke);
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(14px);
+      padding:22px;
+      position:relative;
+      overflow:hidden;
+      transform: translateZ(0);
+    }
+
+    /* hover shine */
+    .card::before{
+      content:"";
+      position:absolute; inset:-2px;
+      background: radial-gradient(600px 240px at var(--mx,50%) var(--my,30%), rgba(255,255,255,.22), transparent 45%);
+      opacity:0;
+      transition: opacity .18s ease;
+      pointer-events:none;
+    }
+    .card:hover::before{opacity:1}
+
+    .title{
+      font-size:38px;
+      line-height:1.05;
+      margin:0;
+      letter-spacing:-.6px;
+    }
+    .subtitle{
+      margin:14px 0 0;
+      color:var(--muted);
+      font-size:15px;
+      line-height:1.5;
+    }
+    .pillrow{
+      display:flex; flex-wrap:wrap; gap:10px;
+      margin-top:18px;
+    }
+    .pill{
+      padding:9px 12px;
+      border-radius: 999px;
+      border:1px solid var(--stroke);
+      background: rgba(255,255,255,.04);
+      color: rgba(255,255,255,.86);
+      font-size:12px;
+    }
+
+    .grid{
+      margin-top:18px;
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap:18px;
+    }
+    .span6{grid-column: span 6;}
+    .span4{grid-column: span 4;}
+    .span8{grid-column: span 8;}
+    .span12{grid-column: span 12;}
+    @media (max-width: 920px){
+      .span6,.span4,.span8{grid-column: span 12;}
+    }
+
+    .k{
+      font-size:12px; color:var(--muted);
+      margin:0 0 6px;
+      letter-spacing:.3px;
+      text-transform:uppercase;
+    }
+    .v{
+      margin:0;
+      font-size:16px;
+    }
+
+    .proj{
+      display:flex; gap:14px; align-items:flex-start;
+      padding:16px;
+      border-radius:18px;
+      border:1px solid var(--stroke);
+      background: rgba(255,255,255,.04);
+      transition: transform .18s ease, background .18s ease, border-color .18s ease;
+    }
+    .proj:hover{
+      transform: translateY(-4px);
+      background: rgba(255,255,255,.07);
+      border-color: rgba(255,255,255,.22);
+    }
+    .dot{
+      width:12px; height:12px; border-radius:50%;
+      margin-top:5px;
+      background: linear-gradient(135deg, var(--a), var(--b));
+      box-shadow: 0 8px 22px rgba(0,242,96,.22);
+      flex:0 0 auto;
+    }
+    .proj h3{margin:0; font-size:15px}
+    .proj p{margin:6px 0 0; color:var(--muted); font-size:13px; line-height:1.45}
+    .proj a{color:inherit; text-decoration:none}
+    .tags{margin-top:10px; display:flex; gap:8px; flex-wrap:wrap}
+    .tag{font-size:11px; color:rgba(255,255,255,.78); border:1px solid var(--stroke); padding:6px 10px; border-radius:999px; background: rgba(255,255,255,.03)}
+
+    .reveal{
+      opacity:0;
+      transform: translateY(14px);
+      transition: opacity .7s ease, transform .7s ease;
+    }
+    .reveal.show{
+      opacity:1;
+      transform: translateY(0);
+    }
+
+    footer{
+      margin-top:18px;
+      text-align:center;
+      color:var(--muted);
+      font-size:12px;
+      padding: 10px 0 0;
+    }
+    .sep{
+      height:1px; background: rgba(255,255,255,.10);
+      margin:14px 0 0;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="fx"></canvas>
+  <div class="aurora"></div>
+  <div class="glow" id="glow"></div>
+
+  <div class="wrap">
+    <header class="reveal">
+      <div class="brand">
+        <div class="logo"></div>
+        <div>
+          <h1>Boboxon Jumaboyev</h1>
+          <p>Python Backend • APIs • Automation</p>
+        </div>
+      </div>
+      <nav>
+        <a class="btn primary" href="https://github.com/Boboxon2010" target="_blank" rel="noreferrer">GitHub</a>
+        <a class="btn" href="https://t.me/Boboxon_Jumaboyev" target="_blank" rel="noreferrer">Telegram</a>
+        <a class="btn" href="https://instagram.com/jumaboyev__006" target="_blank" rel="noreferrer">Instagram</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <div class="card reveal" id="heroCard">
+        <p class="k">Backend Profile</p>
+        <h2 class="title">Build fast, clean, scalable systems.</h2>
+        <p class="subtitle">
+          I design backend services with Python, focusing on reliable APIs, automation, and clean architecture.
+          Performance, readability, and maintainability are the priorities.
+        </p>
+
+        <div class="pillrow">
+          <span class="pill">FastAPI</span>
+          <span class="pill">Django</span>
+          <span class="pill">PostgreSQL</span>
+          <span class="pill">Docker</span>
+          <span class="pill">Linux</span>
+          <span class="pill">Automation</span>
+        </div>
+      </div>
+
+      <div class="card reveal" id="infoCard">
+        <p class="k">Now</p>
+        <p class="v">✅ Building APIs & bots</p>
+        <div class="sep"></div>
+        <p class="k" style="margin-top:14px">Focus</p>
+        <p class="v">⚡ Speed • Clean code • Scaling</p>
+        <div class="sep"></div>
+        <p class="k" style="margin-top:14px">Stack</p>
+        <p class="v">Python • SQL • Redis • Docker</p>
+      </div>
+    </section>
+
+    <section class="grid">
+      <div class="card reveal span12">
+        <p class="k">Featured Projects</p>
+
+        <!-- EDIT THESE LINKS & TEXTS TO YOUR REAL REPOS -->
+        <div class="proj" data-tilt>
+          <div class="dot"></div>
+          <div>
+            <h3><a href="https://github.com/Boboxon2010" target="_blank" rel="noreferrer">Robocontest Tasks</a></h3>
+            <p>Algorithms, problem solving, and clean Python solutions.</p>
+            <div class="tags">
+              <span class="tag">Python</span><span class="tag">Algorithms</span><span class="tag">DSA</span>
+            </div>
+          </div>
+        </div>
+
+        <div style="height:12px"></div>
+
+        <div class="proj" data-tilt>
+          <div class="dot"></div>
+          <div>
+            <h3><a href="https://github.com/Boboxon2010" target="_blank" rel="noreferrer">Telegram Automation Bot</a></h3>
+            <p>Automation tools, message handling, and integrations.</p>
+            <div class="tags">
+              <span class="tag">Python</span><span class="tag">Automation</span><span class="tag">Bots</span>
+            </div>
+          </div>
+        </div>
+
+        <div style="height:12px"></div>
+
+        <div class="proj" data-tilt>
+          <div class="dot"></div>
+          <div>
+            <h3><a href="https://github.com/Boboxon2010" target="_blank" rel="noreferrer">API Service</a></h3>
+            <p>REST APIs with auth, validation, and clean architecture.</p>
+            <div class="tags">
+              <span class="tag">FastAPI</span><span class="tag">PostgreSQL</span><span class="tag">Docker</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card reveal span6">
+        <p class="k">What I deliver</p>
+        <p class="v">• REST API • Admin panels • Integrations</p>
+        <p class="v">• Automation scripts • Bots • Data pipelines</p>
+        <p class="v">• DB design • Caching • Deployment</p>
+      </div>
+
+      <div class="card reveal span6">
+        <p class="k">Principles</p>
+        <p class="v">• Clean Architecture • SOLID • Testing mindset</p>
+        <p class="v">• Observability • Logging • Reliability</p>
+        <p class="v">• Security basics • Rate limiting • Validation</p>
+      </div>
+    </section>
+
+    <footer class="reveal">
+      <div class="sep"></div>
+      <p>© <span id="year"></span> Boboxon • Built with pure HTML/CSS/JS • Hosted on GitHub Pages</p>
+    </footer>
+  </div>
+
+  <script>
+    // Year
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Mouse glow follow (smooth)
+    const glow = document.getElementById("glow");
+    let gx = innerWidth/2, gy = innerHeight/2, tx=gx, ty=gy;
+    window.addEventListener("mousemove", (e)=>{ tx=e.clientX; ty=e.clientY; }, {passive:true});
+    function animateGlow(){
+      gx += (tx-gx)*0.08;
+      gy += (ty-gy)*0.08;
+      glow.style.left = gx + "px";
+      glow.style.top  = gy + "px";
+      requestAnimationFrame(animateGlow);
+    }
+    animateGlow();
+
+    // Card hover shine coords
+    function bindShine(el){
+      el.addEventListener("mousemove", (e)=>{
+        const r = el.getBoundingClientRect();
+        const mx = ((e.clientX - r.left) / r.width) * 100;
+        const my = ((e.clientY - r.top) / r.height) * 100;
+        el.style.setProperty("--mx", mx + "%");
+        el.style.setProperty("--my", my + "%");
+      }, {passive:true});
+    }
+    document.querySelectorAll(".card").forEach(bindShine);
+
+    // Scroll reveal
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(en=>{
+        if(en.isIntersecting) en.target.classList.add("show");
+      });
+    }, {threshold: 0.15});
+    document.querySelectorAll(".reveal").forEach(el=>io.observe(el));
+
+    // Simple 3D tilt on project items
+    document.querySelectorAll("[data-tilt]").forEach(el=>{
+      let raf = null;
+      function onMove(e){
+        const r = el.getBoundingClientRect();
+        const x = (e.clientX - r.left) / r.width - 0.5;
+        const y = (e.clientY - r.top) / r.height - 0.5;
+        if(raf) cancelAnimationFrame(raf);
+        raf = requestAnimationFrame(()=>{
+          el.style.transform = `translateY(-4px) rotateX(${(-y*6).toFixed(2)}deg) rotateY(${(x*8).toFixed(2)}deg)`;
+        });
+      }
+      function onLeave(){
+        if(raf) cancelAnimationFrame(raf);
+        el.style.transform = "";
+      }
+      el.addEventListener("mousemove", onMove, {passive:true});
+      el.addEventListener("mouseleave", onLeave);
+    });
+
+    // Particles (no library)
+    const c = document.getElementById("fx");
+    const ctx = c.getContext("2d");
+    let W,H,particles;
+    function resize(){
+      W = c.width  = Math.floor(innerWidth * devicePixelRatio);
+      H = c.height = Math.floor(innerHeight * devicePixelRatio);
+      c.style.width = innerWidth+"px";
+      c.style.height = innerHeight+"px";
+      initParticles();
+    }
+    window.addEventListener("resize", resize);
+
+    function initParticles(){
+      const count = Math.min(140, Math.floor(innerWidth/8));
+      particles = Array.from({length: count}, ()=>({
+        x: Math.random()*W,
+        y: Math.random()*H,
+        r: (Math.random()*1.8+0.6)*devicePixelRatio,
+        vx:(Math.random()*0.35+0.05)*devicePixelRatio,
+        vy:(Math.random()*0.25+0.05)*devicePixelRatio,
+        a: Math.random()*0.35+0.12,
+        hue: Math.random()<0.5 ? "0,242,96" : "5,117,230"
+      }));
+    }
+
+    function tick(){
+      ctx.clearRect(0,0,W,H);
+      // draw
+      for(const p of particles){
+        p.x += p.vx; p.y += p.vy;
+        if(p.x>W+50) p.x = -50;
+        if(p.y>H+50) p.y = -50;
+        ctx.beginPath();
+        ctx.fillStyle = `rgba(${p.hue},${p.a})`;
+        ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+        ctx.fill();
+      }
+      // connections
+      for(let i=0;i<particles.length;i++){
+        for(let j=i+1;j<particles.length;j++){
+          const a = particles[i], b = particles[j];
+          const dx=a.x-b.x, dy=a.y-b.y;
+          const d2 = dx*dx+dy*dy;
+          const max = (130*devicePixelRatio);
+          if(d2 < max*max){
+            const t = 1 - Math.sqrt(d2)/max;
+            ctx.strokeStyle = `rgba(255,255,255,${0.09*t})`;
+            ctx.lineWidth = 1*devicePixelRatio;
+            ctx.beginPath();
+            ctx.moveTo(a.x,a.y);
+            ctx.lineTo(b.x,b.y);
+            ctx.stroke();
+          }
+        }
+      }
+      requestAnimationFrame(tick);
+    }
+
+    resize();
+    tick();
+  </script>
+</body>
+</html>
