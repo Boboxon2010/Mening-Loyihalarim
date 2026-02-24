@@ -230,7 +230,7 @@ def ekuk(a, b):
 
 
 def temperaturani_aylantir(temp, tur):
-    """Temperaturani C↔F ga aylantiradi."""
+    """Temperaturani C↔F ga aylantiradi. Turni kiritganda c_to_f yoki f_to_c qilib kiriting!"""
     if tur == "c_to_f":
         return temp * 9 / 5 + 32
     elif tur == "f_to_c":
