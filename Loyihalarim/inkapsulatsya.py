@@ -1,0 +1,1 @@
+#python bu dasturlash tilida inkapsulatsiya (encapsulation) - bu ma'lumotlarni va ularni boshqarish uchun kerakli metodlarni bir joyga to'plash va tashqi muhitdan himoya qilish konsepsiyasidir. Inkapsulatsiya yordamida biz ma'lumotlarni yashirish va faqat kerakli metodlar orqali ularga kirish imkoniyatini yaratamiz.
