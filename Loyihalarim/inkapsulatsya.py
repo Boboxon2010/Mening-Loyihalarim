@@ -60,3 +60,21 @@ print(mashina1.get_mashina_nomi(), mashina1.get_mashina_rangi())
 print(mashina1.get_km())
 print(mashina1.get_kuzov_raqami())
 print(mashina1.add_km(5000))
+
+class Xodimlar:
+    def __init__(self,ism,familya,lavozim,yosh):
+        self.ism = ism
+        self.familya = familiya
+        self.lavozim = lavozim
+        self.__yosh = yosh
+    def get_ism(self):
+        return self.ism.title()
+    def get_familya(self):
+        return self.familya.title()
+    def get_lavozim(self):
+        return self.lavozim.title()
+    def get_yosh(self):
+        return f"{self.get_ism()} {self.get_familya()} ning yoshi: {self.__yosh} yosh"
+xodim_1 = Xodimlar('Boboxon','Jumaboyev','direktor',16)
+print(xodim_1.get_ism(), xodim_1.get_familya(), xodim_1.get_lavozim())
+print(xodim_1.get_yosh())
