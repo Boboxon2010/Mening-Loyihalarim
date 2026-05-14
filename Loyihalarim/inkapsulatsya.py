@@ -52,10 +52,11 @@ class mashina:
     def add_km(self,km):
         if km>0:
             self.__km+=km
+            return f"{self.get_mashina_nomi()} ning yangilangan probegi: {self.__km} km"
         else:
             print("Iltimos, musbat son kiriting!")
 mashina1 = mashina('nexia','oq',100000)
 print(mashina1.get_mashina_nomi(), mashina1.get_mashina_rangi())
 print(mashina1.get_km())
 print(mashina1.get_kuzov_raqami())
-    
+print(mashina1.add_km(5000))
