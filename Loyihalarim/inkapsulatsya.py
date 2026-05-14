@@ -39,13 +39,18 @@ class mashina:
         self.rangi = rangi
         self.__kuzov_raqami = uuid4()
         self.__km = km
-    def mashina_nomi(self):
+    def get_mashina_nomi(self):
         return self.nomi.title()
-    def mashina_rangi(self):
+    def get_mashina_rangi(self):
         return self.rangi.title()
-    def kuzov_raqami(self):
+    def get_kuzov_raqami(self):
         return self.__kuzov_raqami
-    def km(self):
-        return f"{self.mashina_nomi()} ning probegi: {self.__km} km"
-    
+    def get_km(self):
+        return f"{self.get_mashina_nomi()} ning probegi: {self.__km} km"
+    def get_kuzov_raqami(self):
+        return f"{self.get_mashina_nomi()} ning kuzov raqami: {self.__kuzov_raqami}"
+mashina1 = mashina('nexia','oq',100000)
+print(mashina1.get_mashina_nomi(), mashina1.get_mashina_rangi())
+print(mashina1.get_km())
+print(mashina1.get_kuzov_raqami())
     
